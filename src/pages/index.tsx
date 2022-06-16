@@ -10,7 +10,7 @@ const Exchange: NextPage = () => {
         <div className="bg-stone-800">
             <Head>
                 <title>Token Exchange</title>
-                <meta name="description" content="Your New Token Exchange" />
+                <meta name="description" content="NFT Printer" />
                 <link
                     rel="icon"
                     href="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.uPBrGqSV8_52CWr-Oz2_JgHaHa%26pid%3DApi&f=1"

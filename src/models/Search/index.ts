@@ -2,19 +2,27 @@ import { createModel, RematchDispatch } from '@rematch/core';
 import type { RootModel } from '#src/models/model';
 
 type defaultState = {
-  name: string,
+  searchTerms: string,
+  execSearch: boolean,
 };
 
 export const models_Search = createModel<RootModel>()({
   state: {
-    name: 'initial'
+    searchTerms: '',
+    execSearch: false,
   } as defaultState,
   reducers: {
-    reducerRename(state, payload: string){
+    setSearch(state, payload: string){
       return {
         ...state,
-        name: payload,
+        searchTerms: payload,
       };
+    },
+    exSearch(state, payload: boolean){
+      return {
+        ...state, 
+        execSearch: payload,
+      }
     },
   },
   // selectors: (slice, createSelector, hasProps) => ({

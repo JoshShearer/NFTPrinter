@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import { RootState } from '#src/models/store';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import Image from 'next/image';
@@ -8,7 +7,7 @@ import Image from 'next/image';
 import { createStructuredSelector } from '#src/models/utils';
 import { useSelector } from '#src/models/hooks';
 
-// import { RootState, Actions, dispatch, store } from '#src/models/store'
+import { RootState, Actions, dispatch, store } from '#src/models/store'
 // import { models_WebB } from '../../../../models/WebB/index';
 
 const defaultProps = {
@@ -60,7 +59,7 @@ export const Comps_Navigation_Header = (_props: typeof defaultProps) => {
                     name="NFTSearch"
                     id="Search"
                     onChange={(e) =>
-                      dispatch(e.target.value)
+                      dispatch.models_Search.setSearch(e.target.value)
                     }
                     placeholder=" NFT Search"
                     className="block h-11 w-full mt-1 text-white bg-stone-500 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-md"
@@ -69,6 +68,7 @@ export const Comps_Navigation_Header = (_props: typeof defaultProps) => {
                 <div className="col-span-2">
                   <button
                     type="submit"
+                    onClick={() => dispatch.models_Search.execSearch(true)}
                     className="inline-flex px-2 py-3 text-base font-medium text-white bg-stone-800 border border-transparent rounded-md shadow-sm items-right hover:bg-stone-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   >
                     Search
@@ -103,7 +103,7 @@ export const Comps_Navigation_Header = (_props: typeof defaultProps) => {
                         <Menu.Item>
                           {({ active }) => (
                             <a
-                              href="joshshearer.org"
+                              href="https://joshshearer.org"
                               className={
                                 'block px-4 py-2 text-sm text-gray-700'
                               }
