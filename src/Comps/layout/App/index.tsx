@@ -12,14 +12,14 @@ import { Comps_Navigation_Header } from '#src/Comps/Navigation/Header';
 import { Comps_Navigation_Footer } from '#src/Comps/Navigation/Footer';
 import { XIcon } from '@heroicons/react/outline';
 
-const handleSearch = (search) => {
+const handleSearch = (search: string) => {
   const options = {method: 'GET', headers: {Accept: 'application/json'}};
 
-fetch('https://api.opensea.io/api/v1/assets?order_direction=desc&limit=20&include_orders=false', options)
-  .then(response => response.json())
-  .then(response => console.log(response))
-  .catch(err => console.error(err));
-};
+  fetch('https://api.opensea.io/api/v1/assets?order_direction=desc&limit=20&include_orders=false', options)
+    .then(response => response.json())
+    .then(response => console.log(response))
+    .catch(err => console.error(err));
+  };
 
 const defaultProps = {
   idKey: 'default',
@@ -28,7 +28,8 @@ const defaultProps = {
   children?: JSX.Element;
 };
 const selector = createStructuredSelector({
-  search: (root) => root.models_Search.exSearch,
+  search: (root) => root.models_Search.execSearch,
+  searchTerms: (root) => root.models_Search.searchTerms,
 });
 
 export const Comps_layout_App = (_props: typeof defaultProps) => {
