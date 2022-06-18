@@ -1,8 +1,8 @@
 import { createModel, RematchDispatch } from '@rematch/core';
 import type { RootModel } from '#src/models/model';
+import { List } from 'postcss/lib/list';
 
-export interface asset {
-  asset: {
+export type asset = {
     token_id: string,
     image_url: string,
     background_color: string,
@@ -10,48 +10,41 @@ export interface asset {
     external_link: string,
     asset_contract: object,
     owner: object,
-    traits: Array<T>,
-    last_sale: string,
-  }
+    traits: List,
+    last_sale: string
 }
 
 type defaultState = {
   searchTerms: string,
   execSearch: boolean,
-  assets: Array<asset>,
+  NFTData: Array<asset>,
 };
 
 export const models_Search = createModel<RootModel>()({
   state: {
     searchTerms: '',
     execSearch: false,
-    assets: [
-      asset: {
-        token_id: '',
-        image_url: '',
-        background_color: '',
-        name: '',
-        external_link: '',
-        asset_contract: {},
-        owner: {},
-        traits: [],
-        last_sale: '',
-      }
-    ],
+    NFTData: []
   } as defaultState,
   reducers: {
-    setSearch(state, payload: string){
+    setSearchTerms(state, payload: string) {
       return {
         ...state,
         searchTerms: payload,
       };
     },
-    exSearch(state, payload: boolean){
+    exSearch(state, payload: boolean) {
       return {
         ...state, 
         execSearch: payload,
       }
     },
+    setNFTData(state, payload: Array<asset>) {
+      return {
+        ...state, 
+        NFTData: payload,
+      }
+    }
   },
   // selectors: (slice, createSelector, hasProps) => ({
 

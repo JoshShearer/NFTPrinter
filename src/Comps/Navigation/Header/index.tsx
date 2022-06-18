@@ -10,6 +10,16 @@ import { useSelector } from '#src/models/hooks';
 import { RootState, Actions, dispatch, store } from '#src/models/store'
 // import { models_WebB } from '../../../../models/WebB/index';
 
+const getNFTData = (search: string) => {
+  const options = {method: 'GET', headers: {Accept: 'application/json'}};
+
+  fetch('https://api.opensea.io/api/v1/assets?order_direction=desc&limit=20&include_orders=false', options)
+    .then(response => response.json())
+    .then(response => console.log(response))
+    .catch(err => console.error(err));
+  };
+
+
 const defaultProps = {
   idKey: 'default',
 } as {
@@ -59,7 +69,7 @@ export const Comps_Navigation_Header = (_props: typeof defaultProps) => {
                     name="NFTSearch"
                     id="Search"
                     onChange={(e) =>
-                      dispatch.models_Search.setSearch(e.target.value)
+                      dispatch.models_Search.setSearchTerms(e.target.value)
                     }
                     placeholder=" NFT Search"
                     className="block h-11 w-full mt-1 text-white bg-stone-500 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-md"
@@ -68,7 +78,7 @@ export const Comps_Navigation_Header = (_props: typeof defaultProps) => {
                 <div className="col-span-2">
                   <button
                     type="submit"
-                    onClick={() => dispatch.models_Search.execSearch(true)}
+                    onClick={() => getNFTData()}
                     className="inline-flex px-2 py-3 text-base font-medium text-white bg-stone-800 border border-transparent rounded-md shadow-sm items-right hover:bg-stone-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   >
                     Search
