@@ -10,6 +10,16 @@ import { useSelector } from '#src/models/hooks';
 import { RootState, Actions, dispatch, store } from '#src/models/store'
 // import { models_WebB } from '../../../../models/WebB/index';
 
+// alchemy-nft-api/alchemy-web3-script.js
+import { createAlchemyWeb3 } from "@alch/alchemy-web3";
+
+// Replace with your Alchemy api key:
+const apiKey = process.env.REACT_APP_ALC_API;
+const url = process.env.REACT_APP_ALC_REQ + apiKey;
+
+// Initialize an alchemy-web3 instance:
+const web3 = createAlchemyWeb3(url);
+
 const getNFTData = (search: string) => {
   const options = {method: 'GET', headers: {Accept: 'application/json'}};
 

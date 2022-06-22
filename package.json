@@ -20,6 +20,7 @@
     "#src/*": "./src/*"
   },
   "dependencies": {
+    "@alch/alchemy-web3": "^1.4.4",
     "@headlessui/react": "^1.6.4",
     "@heroicons/react": "^1.0.6",
     "@next/bundle-analyzer": "^12.1.6",
